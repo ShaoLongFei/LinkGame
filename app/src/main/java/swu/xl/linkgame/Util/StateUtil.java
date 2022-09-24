@@ -10,9 +10,6 @@ public class StateUtil {
 
     /**
      * 判断是否在前台
-     *
-     * @param context
-     * @return
      */
     public static boolean isBackground(Context context) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -28,7 +25,6 @@ public class StateUtil {
                 }
             }
         }
-
         return false;
     }
 }

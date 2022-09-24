@@ -181,12 +181,6 @@ public class BackgroundMusicManager {
         }
     }
 
-    /**
-     * create mediaplayer for music
-     *
-     * @param path the path relative to assets
-     * @return
-     */
     private MediaPlayer createMediaPlayerFromPath(int path) {
         MediaPlayer mediaPlayer = MediaPlayer.create(mContext, path);
 

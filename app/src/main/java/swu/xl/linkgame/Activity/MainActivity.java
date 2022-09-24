@@ -262,7 +262,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private void playMusic() {
         // 判断是否正在播放
         if (!BackgroundMusicManager.getInstance(this).isBackgroundMusicPlaying()) {
-
             // 播放
             BackgroundMusicManager.getInstance(this).playBackgroundMusic(
                     R.raw.bg_music,
@@ -305,7 +304,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 intent_easy.putExtras(bundle_easy);
                 // 跳转
                 startActivity(intent_easy);
-
                 break;
             case R.id.main_mode_normal:
                 Log.d(Constant.TAG, "普通模式按钮");
@@ -330,7 +328,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 intent_normal.putExtras(bundle_normal);
                 // 跳转
                 startActivity(intent_normal);
-
                 break;
             case R.id.main_mode_hard:
                 Log.d(Constant.TAG, "困难模式按钮");
@@ -355,7 +352,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 intent_hard.putExtras(bundle_hard);
                 // 跳转
                 startActivity(intent_hard);
-
                 break;
             case R.id.main_setting:
                 Log.d(Constant.TAG, "设置按钮");
@@ -364,7 +360,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 final SettingFragment setting = new SettingFragment();
                 transaction.replace(R.id.root_main, setting, "setting");
                 transaction.commit();
-
                 break;
             case R.id.main_help:
                 Log.d(Constant.TAG, "帮助按钮");
@@ -373,7 +368,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 final HelpFragment help = new HelpFragment();
                 transaction.replace(R.id.root_main, help, "help");
                 transaction.commit();
-
                 break;
             case R.id.main_store:
                 Log.d(Constant.TAG, "商店按钮");
@@ -382,14 +376,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 final StoreFragment store = new StoreFragment();
                 transaction.replace(R.id.root_main, store, "store");
                 transaction.commit();
-
+                break;
+            default:
+                break;
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         unregisterReceiver(mBroadcastReceiver);
     }
 }

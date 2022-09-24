@@ -210,163 +210,153 @@ public class LinkActivity extends BaseActivity implements View.OnClickListener, 
 
         // 设置游戏主题内容布局
         time_circle_progress.setLayoutParams(layoutParams);
-        time_circle_progress.post(new Runnable() {
-            @SuppressLint("ClickableViewAccessibility")
-            @Override
-            public void run() {
-                message_bottom = time_circle_progress.getBottom();
+        time_circle_progress.post(() -> {
+            message_bottom = time_circle_progress.getBottom();
 
-                link_layout = findViewById(R.id.link_layout);
-                ViewGroup.LayoutParams params_link_layout = link_layout.getLayoutParams();
-                params_link_layout.height = screenHeight - message_bottom;
-                link_layout.setLayoutParams(params_link_layout);
+            link_layout = findViewById(R.id.link_layout);
+            ViewGroup.LayoutParams params_link_layout = link_layout.getLayoutParams();
+            params_link_layout.height = screenHeight - message_bottom;
+            link_layout.setLayoutParams(params_link_layout);
 
-                // 监听触摸事件
-                link_layout.setOnTouchListener(new View.OnTouchListener() {
-                    @Override
-                    public boolean onTouch(View v, final MotionEvent event) {
-                        // 获取触摸点相对于布局的坐标
-                        int x = (int) event.getX();
-                        int y = (int) event.getY();
+            // 监听触摸事件
+            link_layout.setOnTouchListener((v, event) -> {
+                // 获取触摸点相对于布局的坐标
+                int x = (int) event.getX();
+                int y = (int) event.getY();
 
-                        // 触摸事件
-                        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                            for (final AnimalView animal : manager.getAnimals()) {
-                                // 获取AnimalView实例的rect
-                                RectF rectF = new RectF(
-                                        animal.getLeft(),
-                                        animal.getTop(),
-                                        animal.getRight(),
-                                        animal.getBottom());
+                // 触摸事件
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    for (final AnimalView animal : manager.getAnimals()) {
+                        // 获取AnimalView实例的rect
+                        RectF rectF = new RectF(
+                                animal.getLeft(),
+                                animal.getTop(),
+                                animal.getRight(),
+                                animal.getBottom());
 
-                                // 判断是否包含
-                                if (rectF.contains(x, y) && animal.getVisibility() == View.VISIBLE) {
-                                    // 获取上一次触摸的AnimalView
-                                    final AnimalView lastAnimal = manager.getLastAnimal();
+                        // 判断是否包含
+                        if (rectF.contains(x, y) && animal.getVisibility() == View.VISIBLE) {
+                            // 获取上一次触摸的AnimalView
+                            final AnimalView lastAnimal = manager.getLastAnimal();
 
-                                    // 如果触摸的是石头直接结束
-                                    if (animal.getFlag() == -1) {
-                                        // 播放无法点击音效
-                                        SoundPlayUtil.getInstance(getBaseContext()).play(5);
+                            // 如果触摸的是石头直接结束
+                            if (animal.getFlag() == -1) {
+                                // 播放无法点击音效
+                                SoundPlayUtil.getInstance(getBaseContext()).play(5);
 
-                                        break;
-                                    }
-
-                                    // 如果不是第一次触摸 且 触摸的不是同一个点
-                                    if (lastAnimal != null && lastAnimal != animal) {
-
-                                        Log.d(Constant.TAG, lastAnimal + " " + animal);
-
-                                        // 如果两者的图片相同，且两者可以连接
-                                        if (animal.getFlag() == lastAnimal.getFlag() &&
-                                                AnimalSearchUtil.canMatchTwoAnimalWithTwoBreak(
-                                                        manager.getBoard(),
-                                                        lastAnimal.getPoint(),
-                                                        animal.getPoint(),
-                                                        linkInfo
-                                                )) {
-                                            // 播放无法点击音效
-                                            SoundPlayUtil.getInstance(getBaseContext()).play(3);
-
-                                            // 当前点改变背景和动画
-                                            animal.changeAnimalBackground(LinkConstant.ANIMAL_SELECT_BG);
-                                            animationOnSelectAnimal(animal);
-
-                                            // 画线
-                                            link_layout.setLinkInfo(linkInfo);
-
-                                            // 设置所有的宝可梦不可以点击
-                                            link_layout.setEnabled(false);
-
-                                            // 延迟操作
-                                            new Handler().postDelayed(new Runnable() {
-                                                @Override
-                                                public void run() {
-
-                                                    // 播放消除音效
-                                                    SoundPlayUtil.getInstance(getBaseContext()).play(4);
-
-                                                    // 修改模板
-                                                    manager.getBoard()[lastAnimal.getPoint().x][lastAnimal.getPoint().y] = 0;
-                                                    manager.getBoard()[animal.getPoint().x][animal.getPoint().y] = 0;
-
-                                                    // 粉碎
-                                                    explosionField.explode(lastAnimal);
-                                                    explosionField.explode(animal);
-
-                                                    // 隐藏
-                                                    lastAnimal.setVisibility(View.INVISIBLE);
-                                                    lastAnimal.clearAnimation();
-                                                    animal.setVisibility(View.INVISIBLE);
-                                                    animal.clearAnimation();
-
-                                                    // 上一个点置空
-                                                    manager.setLastAnimal(null);
-
-                                                    // 去线
-                                                    link_layout.setLinkInfo(null);
-
-                                                    // 获得金币
-                                                    money += 2;
-                                                    money_text.setText(String.valueOf(money));
-
-                                                    // 设置所有的宝可梦可以点击
-                                                    link_layout.setEnabled(true);
-                                                }
-                                            }, 500);
-                                        } else {
-                                            // 点击的两个图片不可以相连接
-
-                                            // 播放点击音效
-                                            SoundPlayUtil.getInstance(getBaseContext()).play(3);
-
-                                            // 上一个点恢复原样
-                                            lastAnimal.changeAnimalBackground(LinkConstant.ANIMAL_BG);
-                                            if (lastAnimal.getAnimation() != null) {
-                                                // 清楚所有动画
-                                                lastAnimal.clearAnimation();
-                                            }
-
-                                            // 设置当前点的背景颜色和动画
-                                            animal.changeAnimalBackground(LinkConstant.ANIMAL_SELECT_BG);
-                                            animationOnSelectAnimal(animal);
-
-                                            // 将当前点作为选中点
-                                            manager.setLastAnimal(animal);
-                                        }
-                                    } else if (lastAnimal == null) {
-                                        // 播放点击音效
-                                        SoundPlayUtil.getInstance(getBaseContext()).play(3);
-
-                                        // 第一次触摸 当前点改变背景和动画
-                                        animal.changeAnimalBackground(LinkConstant.ANIMAL_SELECT_BG);
-                                        animationOnSelectAnimal(animal);
-
-                                        // 将当前点作为选中点
-                                        manager.setLastAnimal(animal);
-                                    }
-
-                                    break;
-                                }
+                                break;
                             }
+
+                            // 如果不是第一次触摸 且 触摸的不是同一个点
+                            if (lastAnimal != null && lastAnimal != animal) {
+
+                                Log.d(Constant.TAG, lastAnimal + " " + animal);
+
+                                // 如果两者的图片相同，且两者可以连接
+                                if (animal.getFlag() == lastAnimal.getFlag() &&
+                                        AnimalSearchUtil.canMatchTwoAnimalWithTwoBreak(
+                                                manager.getBoard(),
+                                                lastAnimal.getPoint(),
+                                                animal.getPoint(),
+                                                linkInfo
+                                        )) {
+                                    // 播放无法点击音效
+                                    SoundPlayUtil.getInstance(getBaseContext()).play(3);
+
+                                    // 当前点改变背景和动画
+                                    animal.changeAnimalBackground(LinkConstant.ANIMAL_SELECT_BG);
+                                    animationOnSelectAnimal(animal);
+
+                                    // 画线
+                                    link_layout.setLinkInfo(linkInfo);
+
+                                    // 设置所有的宝可梦不可以点击
+                                    link_layout.setEnabled(false);
+
+                                    // 延迟操作
+                                    new Handler().postDelayed(() -> {
+
+                                        // 播放消除音效
+                                        SoundPlayUtil.getInstance(getBaseContext()).play(4);
+
+                                        // 修改模板
+                                        manager.getBoard()[lastAnimal.getPoint().x][lastAnimal.getPoint().y] = 0;
+                                        manager.getBoard()[animal.getPoint().x][animal.getPoint().y] = 0;
+
+                                        // 粉碎
+                                        explosionField.explode(lastAnimal);
+                                        explosionField.explode(animal);
+
+                                        // 隐藏
+                                        lastAnimal.setVisibility(View.INVISIBLE);
+                                        lastAnimal.clearAnimation();
+                                        animal.setVisibility(View.INVISIBLE);
+                                        animal.clearAnimation();
+
+                                        // 上一个点置空
+                                        manager.setLastAnimal(null);
+
+                                        // 去线
+                                        link_layout.setLinkInfo(null);
+
+                                        // 获得金币
+                                        money += 2;
+                                        money_text.setText(String.valueOf(money));
+
+                                        // 设置所有的宝可梦可以点击
+                                        link_layout.setEnabled(true);
+                                    }, 500);
+                                } else {
+                                    // 点击的两个图片不可以相连接
+
+                                    // 播放点击音效
+                                    SoundPlayUtil.getInstance(getBaseContext()).play(3);
+
+                                    // 上一个点恢复原样
+                                    lastAnimal.changeAnimalBackground(LinkConstant.ANIMAL_BG);
+                                    if (lastAnimal.getAnimation() != null) {
+                                        // 清楚所有动画
+                                        lastAnimal.clearAnimation();
+                                    }
+
+                                    // 设置当前点的背景颜色和动画
+                                    animal.changeAnimalBackground(LinkConstant.ANIMAL_SELECT_BG);
+                                    animationOnSelectAnimal(animal);
+
+                                    // 将当前点作为选中点
+                                    manager.setLastAnimal(animal);
+                                }
+                            } else if (lastAnimal == null) {
+                                // 播放点击音效
+                                SoundPlayUtil.getInstance(getBaseContext()).play(3);
+
+                                // 第一次触摸 当前点改变背景和动画
+                                animal.changeAnimalBackground(LinkConstant.ANIMAL_SELECT_BG);
+                                animationOnSelectAnimal(animal);
+
+                                // 将当前点作为选中点
+                                manager.setLastAnimal(animal);
+                            }
+
+                            break;
                         }
-
-                        return true;
                     }
-                });
+                }
 
-                // 开始游戏
-                manager.startGame(getApplicationContext(),
-                        link_layout,
-                        screenWidth,
-                        screenHeight - message_bottom - ScreenUtil.getNavigationBarHeight(getApplicationContext()),
-                        level.getL_id(),
-                        level.getL_mode()
-                );
+                return true;
+            });
 
-                // 设置监听者
-                manager.setListener(LinkActivity.this);
-            }
+            // 开始游戏
+            manager.startGame(getApplicationContext(),
+                    link_layout,
+                    screenWidth,
+                    screenHeight - message_bottom - ScreenUtil.getNavigationBarHeight(getApplicationContext()),
+                    level.getL_id(),
+                    level.getL_mode()
+            );
+
+            // 设置监听者
+            manager.setListener(LinkActivity.this);
         });
 
         level_text = findViewById(R.id.link_level_text);
@@ -494,7 +484,6 @@ public class LinkActivity extends BaseActivity implements View.OnClickListener, 
                 } else {
                     Toast.makeText(this, "道具已经用完", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             case R.id.prop_bomb:
                 Log.d(Constant.TAG, "炸弹道具");
@@ -515,7 +504,6 @@ public class LinkActivity extends BaseActivity implements View.OnClickListener, 
                 } else {
                     Toast.makeText(this, "道具已经用完", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             case R.id.prop_refresh:
                 Log.d(Constant.TAG, "刷新道具");
@@ -543,7 +531,6 @@ public class LinkActivity extends BaseActivity implements View.OnClickListener, 
                 } else {
                     Toast.makeText(this, "道具已经用完", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
             case R.id.link_pause:
                 Log.d(Constant.TAG, "暂停");
@@ -560,7 +547,8 @@ public class LinkActivity extends BaseActivity implements View.OnClickListener, 
                 pause.setArguments(bundle);
                 transaction.replace(R.id.root_link, pause, "pause");
                 transaction.commit();
-
+                break;
+            default:
                 break;
         }
     }

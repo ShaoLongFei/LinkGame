@@ -3,7 +3,6 @@ package swu.xl.linkgame.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -44,12 +43,7 @@ public class StoreFragment extends Fragment {
         final View inflate = inflater.inflate(R.layout.store_view, container, false);
 
         // 拦截事件
-        inflate.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        inflate.setOnTouchListener((v, event) -> true);
 
         // 处理事件
         // 查询用户数据
@@ -107,45 +101,36 @@ public class StoreFragment extends Fragment {
         });
 
         // 购买炸弹
-        inflate.findViewById(R.id.store_bomb).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 播放点击音效
-                SoundPlayUtil.getInstance(getContext()).play(3);
+        inflate.findViewById(R.id.store_bomb).setOnClickListener(v -> {
+            // 播放点击音效
+            SoundPlayUtil.getInstance(getContext()).play(3);
 
-                Log.d(Constant.TAG, "购买炸弹");
+            Log.d(Constant.TAG, "购买炸弹");
 
-                refreshSQLite(PropMode.PROP_BOMB, inflate);
-            }
+            refreshSQLite(PropMode.PROP_BOMB, inflate);
         });
 
         // 购买刷新
-        inflate.findViewById(R.id.store_refresh).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 播放点击音效
-                SoundPlayUtil.getInstance(getContext()).play(3);
+        inflate.findViewById(R.id.store_refresh).setOnClickListener(v -> {
+            // 播放点击音效
+            SoundPlayUtil.getInstance(getContext()).play(3);
 
-                Log.d(Constant.TAG, "购买刷新");
+            Log.d(Constant.TAG, "购买刷新");
 
-                refreshSQLite(PropMode.PROP_REFRESH, inflate);
-            }
+            refreshSQLite(PropMode.PROP_REFRESH, inflate);
         });
 
         // 移除该视图
-        inflate.findViewById(R.id.store_delete).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 播放点击音效
-                SoundPlayUtil.getInstance(getContext()).play(3);
+        inflate.findViewById(R.id.store_delete).setOnClickListener(v -> {
+            // 播放点击音效
+            SoundPlayUtil.getInstance(getContext()).play(3);
 
-                if (getActivity() != null) {
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.remove(StoreFragment.this);
-                    transaction.commit();
-                } else {
-                    System.out.println("空的Activity");
-                }
+            if (getActivity() != null) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.remove(StoreFragment.this);
+                transaction.commit();
+            } else {
+                System.out.println("空的Activity");
             }
         });
 
@@ -191,6 +176,8 @@ public class StoreFragment extends Fragment {
 
                 // 道具购买提示
                 Toast.makeText(getContext(), "成功购买一个重排道具，消耗" + refresh_money + "金币", Toast.LENGTH_SHORT).show();
+                break;
+            default:
                 break;
         }
 

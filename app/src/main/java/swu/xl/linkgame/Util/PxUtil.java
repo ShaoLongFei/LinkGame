@@ -13,10 +13,6 @@ public class PxUtil {
 
     /**
      * 将传递的 整型dp 值转化为 px
-     *
-     * @param dp
-     * @param context
-     * @return
      */
     public static int dpToPx(int dp, Context context) {
         return (int) (dp * getScreenDensity(context));
@@ -24,10 +20,6 @@ public class PxUtil {
 
     /**
      * 将传递的 浮点型dp 值转化为 px
-     *
-     * @param dp
-     * @param context
-     * @return
      */
     public static int dpToPx(float dp, Context context) {
         return (int) (dp * getScreenDensity(context));
@@ -35,10 +27,6 @@ public class PxUtil {
 
     /**
      * 将传递的 整型px 值转化为 dp
-     *
-     * @param px
-     * @param context
-     * @return
      */
     public static float pxToDp(int px, Context context) {
         return (px / getScreenDensity(context));
@@ -46,10 +34,6 @@ public class PxUtil {
 
     /**
      * 将传递的 浮点型px 值转化为 dp
-     *
-     * @param px
-     * @param context
-     * @return
      */
     public static float pxToDp(float px, Context context) {
         return (px / getScreenDensity(context));
@@ -57,10 +41,6 @@ public class PxUtil {
 
     /**
      * 将传递的 sp 值转化为 px
-     *
-     * @param sp
-     * @param context
-     * @return
      */
     public static int spToPx(int sp, Context context) {
         return (int) (sp * getScreenDensity(context));
@@ -68,10 +48,6 @@ public class PxUtil {
 
     /**
      * 将传递的 px 值 转化为 sp
-     *
-     * @param px
-     * @param context
-     * @return
      */
     public static int pxToSp(int px, Context context) {
         return (int) (px / getScreenDensity(context));

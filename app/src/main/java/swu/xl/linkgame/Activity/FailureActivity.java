@@ -14,7 +14,6 @@ import java.util.List;
 
 import swu.xl.linkgame.Constant.Constant;
 import swu.xl.linkgame.Model.XLLevel;
-import swu.xl.linkgame.Music.BackgroundMusicManager;
 import swu.xl.linkgame.Music.SoundPlayUtil;
 import swu.xl.linkgame.R;
 

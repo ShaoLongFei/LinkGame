@@ -40,11 +40,4 @@ public class BaseActivity extends AppCompatActivity {
             BackgroundMusicManager.getInstance(this).resumeBackgroundMusic();
         }
     }
-
-    @Override
-    public void onBackPressed() {
-        // super.onBackPressed();
-
-        Log.d(Constant.TAG, "系统返回");
-    }
 }

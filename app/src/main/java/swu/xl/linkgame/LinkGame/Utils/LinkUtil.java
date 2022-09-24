@@ -16,10 +16,9 @@ import swu.xl.linkgame.LinkGame.SelfView.AnimalView;
 import swu.xl.linkgame.Util.PxUtil;
 
 public class LinkUtil {
+
     /**
      * 设置所有的宝可梦的响应状态
-     *
-     * @param status
      */
     public static void setBoardsStatus(boolean status) {
         // 获取所有宝可梦视图
@@ -70,22 +69,17 @@ public class LinkUtil {
                                     }
                                 }
                             }
-
                         }
                     }
 
                 }
             }
-
         }
-
         return new AnimalPoint[]{point1, point2};
     }
 
     /**
-     * 返回一个布局存在的AnimalView
-     *
-     * @return
+     * 返回一个布局存在的 AnimalView
      */
     public static int getExistAnimal() {
         // 获取布局
@@ -133,15 +127,11 @@ public class LinkUtil {
                 }
             }
         }
-
         return true;
     }
 
     /**
      * 根据游戏时间获取相关星级评价
-     *
-     * @param time
-     * @return
      */
     public static char getStarByTime(int time) {
         if (time <= 40) {
@@ -155,9 +145,6 @@ public class LinkUtil {
 
     /**
      * 根据游戏时间获取相关分数评价
-     *
-     * @param time
-     * @return
      */
     public static int getScoreByTime(int time) {
         return (LinkConstant.TIME - time) * LinkConstant.BASE_SCORE / LinkConstant.TIME;
@@ -169,7 +156,6 @@ public class LinkUtil {
     public static int getSerialClick() {
         // 获取布局
         int[][] board = LinkManager.getLinkManager().getBoard();
-
         return (board.length - 2) * (board[0].length - 2) / 2;
     }
 
@@ -182,7 +168,6 @@ public class LinkUtil {
      */
     public static AnimalPoint getRealAnimalPoint(AnimalPoint point, Context context) {
         LinkManager manager = LinkManager.getLinkManager();
-
         return new AnimalPoint(
                 manager.getPadding_hor() + PxUtil.dpToPx(manager.getAnimal_size(), context) / 2 + point.y * PxUtil.dpToPx(manager.getAnimal_size(), context),
                 manager.getPadding_ver() + PxUtil.dpToPx(manager.getAnimal_size(), context) / 2 + point.x * PxUtil.dpToPx(manager.getAnimal_size(), context)
@@ -191,10 +176,6 @@ public class LinkUtil {
 
     /**
      * 加载给定关卡号和难度的布局
-     *
-     * @param level_id
-     * @param level_mode
-     * @return
      */
     public static int[][] loadLevelWithIdAndMode(int level_id, char level_mode) {
 
@@ -222,15 +203,11 @@ public class LinkUtil {
         for (int i = 0; i < row; i++) {
             System.arraycopy(board[i], 0, clone[i], 0, col);
         }
-
         return clone;
     }
 
     /**
      * 加载所需的数量的图片
-     *
-     * @param board
-     * @return
      */
     public static List<Integer> loadPictureResourceWithBoard(int[][] board) {
         // 初始化存储集合
@@ -258,7 +235,6 @@ public class LinkUtil {
                 list.add(var);
             }
         }
-
         return list;
     }
 
@@ -284,15 +260,11 @@ public class LinkUtil {
         if (data.length == 0) {
             return 0;
         }
-
         return getMaxDataBySort(data);
     }
 
     /**
-     * 返回数组中第k小的数值
-     *
-     * @param data
-     * @return
+     * 返回数组中第 k 小的数值
      */
     private static int getMaxDataBySort(int[] data) {
         // 排序
@@ -303,10 +275,6 @@ public class LinkUtil {
 
     /**
      * 归并排序 递归
-     *
-     * @param nums
-     * @param start
-     * @param end
      */
     private static void mergeSort(int[] nums, int start, int end) {
         // 只要划分的区间长度仍然不为1
@@ -324,11 +292,6 @@ public class LinkUtil {
 
     /**
      * 归并
-     *
-     * @param nums
-     * @param start
-     * @param end
-     * @param middle
      */
     private static void merge(int[] nums, int start, int end, int middle) {
         // 模拟第一个序列的头指针

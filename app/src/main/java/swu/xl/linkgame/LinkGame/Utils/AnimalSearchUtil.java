@@ -9,12 +9,6 @@ import swu.xl.linkgame.LinkGame.Model.LinkInfo;
 public class AnimalSearchUtil {
     /**
      * 判断在给点的布局中，给定的两个位置，能否无转折点连接。
-     *
-     * @param board
-     * @param startPoint
-     * @param endPoint
-     * @param linkInfo
-     * @return
      */
     private static boolean canMatchTwoAnimalWithNoBreak(int[][] board, AnimalPoint startPoint, AnimalPoint endPoint, LinkInfo linkInfo) {
         // 如果不属于无转折连接，直接返回
@@ -63,12 +57,6 @@ public class AnimalSearchUtil {
 
     /**
      * 判断在给点的布局中，给定的两个位置，能否在有一个转折点的情况下连接。
-     *
-     * @param board
-     * @param startPoint
-     * @param endPoint
-     * @param linkInfo
-     * @return
      */
     private static boolean canMatchTwoAnimalWithOneBreak(int[][] board, AnimalPoint startPoint, AnimalPoint endPoint, LinkInfo linkInfo) {
         // 一个转折点，那么满足这个转折点的点只有两个。
@@ -109,12 +97,6 @@ public class AnimalSearchUtil {
 
     /**
      * 判断在给点的布局中，给定的两个位置，能否只有两个转折点的情况下连接。
-     *
-     * @param board
-     * @param startPoint
-     * @param endPoint
-     * @param linkInfo
-     * @return
      */
     public static boolean canMatchTwoAnimalWithTwoBreak(int[][] board, AnimalPoint startPoint, AnimalPoint endPoint, LinkInfo linkInfo) {
         // 判断是不是无转折连接
@@ -124,7 +106,6 @@ public class AnimalSearchUtil {
 
         // 判断是不是一个转折连接
         if (canMatchTwoAnimalWithOneBreak(board, startPoint, endPoint, linkInfo)) {
-
             return true;
         }
 
@@ -150,13 +131,9 @@ public class AnimalSearchUtil {
                     if (linkInfo != null) {
                         linkInfo.setPoints(new LinkInfo(startPoint, breakPoint, temp_info.getPoints().get(1), endPoint).getPoints());
                     }
-
-                    // 返回
                     return true;
                 }
-
                 // 如果C到不了B继续向右扫描
-
             } else {
                 // 无法向右扫描
                 break;
@@ -183,13 +160,10 @@ public class AnimalSearchUtil {
                     if (linkInfo != null) {
                         linkInfo.setPoints(new LinkInfo(startPoint, breakPoint, temp_info.getPoints().get(1), endPoint).getPoints());
                     }
-
                     // 返回
                     return true;
                 }
-
                 // 如果C到不了B继续向左扫描
-
             } else {
                 // 无法向左扫描
                 break;
@@ -215,13 +189,9 @@ public class AnimalSearchUtil {
                     if (linkInfo != null) {
                         linkInfo.setPoints(new LinkInfo(startPoint, breakPoint, temp_info.getPoints().get(1), endPoint).getPoints());
                     }
-
-                    // 返回
                     return true;
                 }
-
                 // 如果C到不了B继续向下扫描
-
             } else {
                 // 无法向下扫描
                 break;
@@ -247,20 +217,14 @@ public class AnimalSearchUtil {
                     if (linkInfo != null) {
                         linkInfo.setPoints(new LinkInfo(startPoint, breakPoint, temp_info.getPoints().get(1), endPoint).getPoints());
                     }
-
-                    // 返回
                     return true;
                 }
-
                 // 如果C到不了B继续向上扫描
-
             } else {
                 // 无法向上扫描
                 break;
             }
         }
-
-
         return false;
     }
 }

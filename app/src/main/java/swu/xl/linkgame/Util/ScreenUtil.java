@@ -13,9 +13,6 @@ import swu.xl.linkgame.Constant.Constant;
 public class ScreenUtil {
     /**
      * 获取屏幕的宽度
-     *
-     * @param context
-     * @return
      */
     public static int getScreenWidth(Context context) {
         // 窗口管理者
@@ -31,9 +28,6 @@ public class ScreenUtil {
 
     /**
      * 获取屏幕的高度
-     *
-     * @param context
-     * @return
      */
     public static int getScreenHeight(Context context) {
         // 窗口管理者
@@ -49,9 +43,6 @@ public class ScreenUtil {
 
     /**
      * 获取StatusBar状态栏的高度
-     *
-     * @param context
-     * @return
      */
     public static int getStateBarHeight(Context context) {
         int statusHeight = -1;
@@ -68,10 +59,7 @@ public class ScreenUtil {
     }
 
     /**
-     * 判断设置是否有NavigationBar导航栏
-     *
-     * @param context
-     * @return
+     * 判断设置是否有 NavigationBar 导航栏
      */
     private static boolean checkDeviceHasNavigationBar(Context context) {
         boolean hasNavigationBar = false;
@@ -102,9 +90,6 @@ public class ScreenUtil {
 
     /**
      * 返回NavigationBar导航栏的高度
-     *
-     * @param context
-     * @return
      */
     public static int getNavigationBarHeight(Context context) {
         int height = 0;
@@ -116,7 +101,6 @@ public class ScreenUtil {
             height = resources.getDimensionPixelSize(resourceId);
             Log.v("dbw", "Navi height:" + height);
         }
-
         return height;
     }
 

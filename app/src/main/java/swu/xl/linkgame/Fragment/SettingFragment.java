@@ -3,7 +3,6 @@ package swu.xl.linkgame.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
@@ -27,12 +26,7 @@ public class SettingFragment extends Fragment {
         View inflate = inflater.inflate(R.layout.setting_view, container, false);
 
         // 拦截事件
-        inflate.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                return true;
-            }
-        });
+        inflate.setOnTouchListener((v, event) -> true);
 
         // 处理事件
         SeekBar seekBar_music = inflate.findViewById(R.id.seek_bar_music);
@@ -82,24 +76,19 @@ public class SettingFragment extends Fragment {
             }
         });
 
-
         // 移除该视图
-        inflate.findViewById(R.id.setting_finish).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 播放点击音效
-                SoundPlayUtil.getInstance(getContext()).play(3);
+        inflate.findViewById(R.id.setting_finish).setOnClickListener(v -> {
+            // 播放点击音效
+            SoundPlayUtil.getInstance(getContext()).play(3);
 
-                if (getActivity() != null) {
-                    FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.remove(SettingFragment.this);
-                    transaction.commit();
-                } else {
-                    System.out.println("空的Activity");
-                }
+            if (getActivity() != null) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.remove(SettingFragment.this);
+                transaction.commit();
+            } else {
+                System.out.println("空的Activity");
             }
         });
-
         return inflate;
     }
 }

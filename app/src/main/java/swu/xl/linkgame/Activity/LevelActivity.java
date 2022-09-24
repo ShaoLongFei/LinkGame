@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
@@ -114,14 +113,11 @@ public class LevelActivity extends BaseActivity implements View.OnClickListener 
         pager_text = findViewById(R.id.pager_text);
 
         level_pager = findViewById(R.id.level_pager);
-        level_pager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // 禁止HorizontalScrollView滑动
-                // 滑动会影响页面控制器
-                // HorizontalScrollView滑动时也没有回调方法
-                return true;
-            }
+        level_pager.setOnTouchListener((v, event) -> {
+            // 禁止HorizontalScrollView滑动
+            // 滑动会影响页面控制器
+            // HorizontalScrollView滑动时也没有回调方法
+            return true;
         });
 
         level_layout = findViewById(R.id.level_root);
@@ -223,7 +219,6 @@ public class LevelActivity extends BaseActivity implements View.OnClickListener 
      * @return 返回值表示是否滑动
      */
     public boolean scrollLevelsOfDirection(int direction) {
-
         if ((direction == 1 && offset == (pager * screenWidth)) || (direction == -1 && offset == 0)) {
             // 如果当前向右滑动 且 当前已经处于最后一页 或
             // 如果当前向左滑动 且 当前已经处于第一页
@@ -266,7 +261,6 @@ public class LevelActivity extends BaseActivity implements View.OnClickListener 
      */
     @Override
     public void onClick(View v) {
-
         // 播放点击音效
         SoundPlayUtil.getInstance(getBaseContext()).play(3);
 
@@ -275,12 +269,6 @@ public class LevelActivity extends BaseActivity implements View.OnClickListener 
                 Log.d(Constant.TAG, "返回按钮");
 
                 startActivity(new Intent(LevelActivity.this, MainActivity.class));
-
-                // 淡入淡出切换动画
-                // overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
-
-                // 从左向右滑动动画
-                // overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
 
                 // 自定义动画
                 overridePendingTransition(R.anim.in_from_left, R.anim.out_to_right);

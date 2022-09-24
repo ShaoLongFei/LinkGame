@@ -56,9 +56,6 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
 
         // 数据加载配置
         initData();
-
-        // 继续播放背景音乐
-        // BackgroundMusicManager.getInstance(this).resumeBackgroundMusic();
     }
 
     /**
@@ -132,21 +129,20 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
                 Log.d(Constant.TAG, "关卡菜单按钮");
 
                 jumpToActivity(0);
-
                 break;
             case R.id.btn_refresh:
                 // 重新加载按钮
                 Log.d(Constant.TAG, "重新加载按钮");
 
                 jumpToActivity(1);
-
                 break;
             case R.id.btn_next:
                 // 下一关按钮
                 Log.d(Constant.TAG, "下一个关卡按钮");
 
                 jumpToActivity(2);
-
+                break;
+            default:
                 break;
         }
     }
