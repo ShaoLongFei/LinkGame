@@ -8,9 +8,9 @@
 
     <!-- 数据库持有的表 -->
     <list>
-        <mapping class="swu.xl.linkgame.Model.XLUser"  />
-        <mapping class="swu.xl.linkgame.Model.XLProp"  />
-        <mapping class="swu.xl.linkgame.Model.XLLevel" />
+        <mapping class="swu.xl.linkgame.model.XLUser"  />
+        <mapping class="swu.xl.linkgame.model.XLProp"  />
+        <mapping class="swu.xl.linkgame.model.XLLevel" />
     </list>
 
 </litepal>

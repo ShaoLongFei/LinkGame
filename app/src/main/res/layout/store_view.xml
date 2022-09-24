@@ -27,7 +27,7 @@
             android:paddingBottom="20dp"
             android:layout_centerHorizontal="true"
             >
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/ShowMoneyText"
@@ -53,7 +53,7 @@
                     />
 
                 <!--持有的数目-->
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:id="@+id/store_user_money"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                     >
 
                     <!--名称-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -113,7 +113,7 @@
                         />
 
                     <!--描述-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -125,7 +125,7 @@
                 </LinearLayout>
 
                 <!--价格-->
-                <swu.xl.linkgame.SelfView.XLLinearLayout
+                <swu.xl.linkgame.view.XLLinearLayout
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:layout_width="wrap_content"
@@ -146,7 +146,7 @@
                         />
 
                     <!--持有的数目-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:id="@+id/store_fight_money"
                         style="@style/ShowSimpleMoneyNumText"
                         android:layout_width="wrap_content"
@@ -155,7 +155,7 @@
                         android:maxLines="1"
                         android:text="10" />
 
-                </swu.xl.linkgame.SelfView.XLLinearLayout>
+                </swu.xl.linkgame.view.XLLinearLayout>
             </LinearLayout>
 
             <!--炸弹道具-->
@@ -188,7 +188,7 @@
                     >
 
                     <!--名称-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -197,7 +197,7 @@
                         />
 
                     <!--描述-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -209,7 +209,7 @@
                 </LinearLayout>
 
                 <!--价格-->
-                <swu.xl.linkgame.SelfView.XLLinearLayout
+                <swu.xl.linkgame.view.XLLinearLayout
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:id="@+id/store_bomb"
@@ -230,7 +230,7 @@
                         />
 
                     <!--持有的数目-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:id="@+id/store_bomb_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -240,7 +240,7 @@
                         style="@style/ShowSimpleMoneyNumText"
                         />
 
-                </swu.xl.linkgame.SelfView.XLLinearLayout>
+                </swu.xl.linkgame.view.XLLinearLayout>
             </LinearLayout>
 
             <!--刷新道具-->
@@ -273,7 +273,7 @@
                     >
 
                     <!--名称-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -282,7 +282,7 @@
                         />
 
                     <!--描述-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
@@ -294,7 +294,7 @@
                 </LinearLayout>
 
                 <!--价格-->
-                <swu.xl.linkgame.SelfView.XLLinearLayout
+                <swu.xl.linkgame.view.XLLinearLayout
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
                     android:id="@+id/store_refresh"
@@ -315,7 +315,7 @@
                         />
 
                     <!--持有的数目-->
-                    <swu.xl.linkgame.SelfView.XLTextView
+                    <swu.xl.linkgame.view.XLTextView
                         android:id="@+id/store_refresh_money"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -325,7 +325,7 @@
                         style="@style/ShowSimpleMoneyNumText"
                         />
 
-                </swu.xl.linkgame.SelfView.XLLinearLayout>
+                </swu.xl.linkgame.view.XLLinearLayout>
             </LinearLayout>
 
         </LinearLayout>

@@ -44,7 +44,7 @@
                 android:layout_marginEnd="20dp"
                 >
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Music_Pic"
@@ -96,7 +96,7 @@
                 android:layout_marginEnd="20dp"
                 >
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Sound_Pic"
@@ -146,7 +146,7 @@
                 android:gravity="center_horizontal"
                 >
 
-                <swu.xl.linkgame.SelfView.XLButton
+                <swu.xl.linkgame.view.XLButton
                     android:id="@+id/setting_finish"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
         android:background="@drawable/view_setting_banner"
         android:gravity="center_horizontal">
 
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             style="@style/SettingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

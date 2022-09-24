@@ -18,7 +18,7 @@
         >
 
         <!--暂停-->
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -46,7 +46,7 @@
         >
 
         <!--解释说明文字-->
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/ExplainString"
@@ -77,7 +77,7 @@
                     android:src="@drawable/view_no_break"
                     />
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -104,7 +104,7 @@
                     android:src="@drawable/view_two_break1"
                     />
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -140,7 +140,7 @@
                     android:src="@drawable/view_one_break"
                     />
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -167,7 +167,7 @@
                     android:src="@drawable/view_two_break2"
                     />
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -199,7 +199,7 @@
                     android:src="@drawable/link_prop_fight"
                     />
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Fight_Explain"
@@ -219,7 +219,7 @@
                     android:layout_height="50dp"
                     android:src="@drawable/link_prop_bomb"
                     />
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Bomb_Explain"
@@ -250,7 +250,7 @@
                     android:src="@drawable/link_prop_resort"
                     />
 
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -271,7 +271,7 @@
                     android:layout_height="50dp"
                     android:src="@drawable/link_stop"
                     />
-                <swu.xl.linkgame.SelfView.XLTextView
+                <swu.xl.linkgame.view.XLTextView
                     android:layout_marginStart="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -295,7 +295,7 @@
         android:gravity="center"
         >
 
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             android:id="@+id/main_know"
             android:layout_width="200dp"
             android:layout_height="wrap_content"

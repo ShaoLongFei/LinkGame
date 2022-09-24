@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.FailureActivity"
+    tools:context=".activity.FailureActivity"
     android:background="@drawable/bg_success_failure_link"
     android:orientation="vertical">
 
@@ -25,7 +25,7 @@
             />
 
         <!--失败了-->
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/cry_pikaqiu"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SuccessActivity"
+    tools:context=".activity.SuccessActivity"
 
     android:orientation="vertical"
     android:background="@drawable/bg_success_failure_link">
@@ -33,7 +33,7 @@
             android:layout_alignParentBottom="true"
             />
 
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Success"
@@ -88,7 +88,7 @@
         </RelativeLayout>
 
         <!--关卡信息-->
-        <swu.xl.linkgame.SelfView.XLTextView
+        <swu.xl.linkgame.view.XLTextView
             android:id="@+id/level_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,14 +106,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             >
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Score"
                 style="@style/StateTitleMessage"
                 />
 
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:id="@+id/score_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -129,14 +129,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             >
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Time"
                 style="@style/StateTitleMessage"
                 />
 
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:id="@+id/time_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -152,14 +152,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             >
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Batter"
                 style="@style/StateTitleMessage"
                 />
 
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:id="@+id/batter_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

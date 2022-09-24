@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.MainActivity"
+    tools:context=".activity.MainActivity"
 
     android:background="@drawable/main_bg"
     android:id="@+id/root_main">
@@ -25,7 +25,7 @@
             >
 
             <!--标题-->
-            <swu.xl.linkgame.SelfView.XLTextView
+            <swu.xl.linkgame.view.XLTextView
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
@@ -59,21 +59,21 @@
             >
 
             <!--简单-->
-            <swu.xl.linkgame.SelfView.XLButton
+            <swu.xl.linkgame.view.XLButton
                 android:id="@+id/main_mode_easy"
                 style="@style/mode_btn"
                 android:text="@string/mode_easy"
                 />
 
             <!--普通-->
-            <swu.xl.linkgame.SelfView.XLButton
+            <swu.xl.linkgame.view.XLButton
                 android:id="@+id/main_mode_normal"
                 style="@style/mode_btn"
                 android:text="@string/mode_normal"
                 />
 
             <!--困难-->
-            <swu.xl.linkgame.SelfView.XLButton
+            <swu.xl.linkgame.view.XLButton
                 android:id="@+id/main_mode_hard"
                 style="@style/mode_btn"
                 android:text="@string/mode_hard"
