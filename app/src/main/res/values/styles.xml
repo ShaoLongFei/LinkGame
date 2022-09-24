@@ -108,18 +108,6 @@
     </style>
 
     <!--控制道具的数量的样式-->
-    <style name="link_prop_num">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textAlignment">center</item>
-        <item name="android:layout_marginEnd">-4dp</item>
-        <item name="android:layout_marginBottom">-4dp</item>
-        <item name="android:paddingStart">6dp</item>
-        <item name="android:paddingEnd">6dp</item>
-        <item name="android:background">@drawable/link_prop_num</item>
-    </style>
 
     <!--金币的字体样式-->
     <style name="link_money_text">
@@ -130,14 +118,6 @@
     </style>
 
     <!--时间的字体样式-->
-    <style name="link_time_text">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:paddingStart">20dp</item>
-        <item name="android:background">@drawable/link_time</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_centerInParent">true</item>
-    </style>
 
     <!--包裹道具的布局样式-->
     <style name="link_prop_relative">
@@ -147,10 +127,6 @@
     </style>
 
     <!--包裹道具的布局内部样式-->
-    <style name="link_prop_in">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">50dp</item>
-    </style>
 
     <!--暂停的字体样式-->
     <style name="ShowPauseText">
