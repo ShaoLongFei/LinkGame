@@ -22,11 +22,11 @@ public class BaseActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
-        //判断是否进入后台
+        // 判断是否进入后台
         if (StateUtil.isBackground(this)) {
-            Log.d(Constant.TAG,"后台");
+            Log.d(Constant.TAG, "后台");
 
-            //暂停播放
+            // 暂停播放
             BackgroundMusicManager.getInstance(this).pauseBackgroundMusic();
         }
     }
@@ -35,7 +35,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
 
-        //继续播放背景音乐
+        // 继续播放背景音乐
         if (!BackgroundMusicManager.getInstance(this).isBackgroundMusicPlaying()) {
             BackgroundMusicManager.getInstance(this).resumeBackgroundMusic();
         }
@@ -43,8 +43,8 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
+        // super.onBackPressed();
 
-        Log.d(Constant.TAG,"系统返回");
+        Log.d(Constant.TAG, "系统返回");
     }
 }

@@ -19,10 +19,10 @@ public class HelpFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //加载布局
+        // 加载布局
         View inflate = inflater.inflate(R.layout.help_view, container, false);
 
-        //拦截事件
+        // 拦截事件
         inflate.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -30,18 +30,18 @@ public class HelpFragment extends Fragment {
             }
         });
 
-        //处理事件
+        // 处理事件
         inflate.findViewById(R.id.main_know).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //播放点击音效
+                // 播放点击音效
                 SoundPlayUtil.getInstance(getContext()).play(3);
 
-                if (getActivity() != null){
+                if (getActivity() != null) {
                     FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                     transaction.remove(HelpFragment.this);
                     transaction.commit();
-                }else {
+                } else {
                     System.out.println("空的Activity");
                 }
             }

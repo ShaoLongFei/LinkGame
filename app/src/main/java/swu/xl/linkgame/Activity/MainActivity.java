@@ -37,21 +37,21 @@ import swu.xl.linkgame.R;
 import swu.xl.linkgame.Util.PxUtil;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
-    //简单模式
+    // 简单模式
     Button mode_easy;
-    //普通模式
+    // 普通模式
     Button mode_normal;
-    //困难模式
+    // 困难模式
     Button mode_hard;
 
-    //设置按钮
+    // 设置按钮
     Button btn_setting;
-    //帮助按钮
+    // 帮助按钮
     Button btn_help;
-    //商店按钮
+    // 商店按钮
     Button btn_store;
 
-    //根布局
+    // 根布局
     RelativeLayout root_main;
 
     private BroadcastReceiver mBroadcastReceiver;
@@ -61,31 +61,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //提前加载资源，不然的话，资源没有加载好，会没有声音
+        // 提前加载资源，不然的话，资源没有加载好，会没有声音
         SoundPlayUtil.getInstance(this);
 
-        //沉浸式状态栏
+        // 沉浸式状态栏
         ImmersionBar.with(this).init();
 
-        //数据库 LitePal
+        // 数据库 LitePal
         LitePal.initialize(this);
         SQLiteDatabase db = LitePal.getDatabase();
 
-        //向数据库装入数据
+        // 向数据库装入数据
         initSQLite3();
 
-        //初始化数据
+        // 初始化数据
         initView();
 
-        //设置模式按钮的drawableLeft
-        setDrawableLeft(mode_easy,R.drawable.main_mode_easy);
-        setDrawableLeft(mode_normal,R.drawable.main_mode_normal);
-        setDrawableLeft(mode_hard,R.drawable.main_mode_hard);
+        // 设置模式按钮的drawableLeft
+        setDrawableLeft(mode_easy, R.drawable.main_mode_easy);
+        setDrawableLeft(mode_normal, R.drawable.main_mode_normal);
+        setDrawableLeft(mode_hard, R.drawable.main_mode_hard);
 
-        //播放音乐
+        // 播放音乐
         playMusic();
 
-        //广播接受者
+        // 广播接受者
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -98,7 +98,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                             if (BackgroundMusicManager.getInstance(getBaseContext()).isBackgroundMusicPlaying()) {
                                 Log.d(Constant.TAG, "正在播放音乐，关闭");
 
-                                //暂停播放
+                                // 暂停播放
                                 BackgroundMusicManager.getInstance(getBaseContext()).pauseBackgroundMusic();
                             }
 
@@ -124,99 +124,99 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 初始化数据库
      */
     private void initSQLite3() {
-        //查找当前数据库的内容
+        // 查找当前数据库的内容
         List<XLUser> users = LitePal.findAll(XLUser.class);
         List<XLLevel> levels = LitePal.findAll(XLLevel.class);
         List<XLProp> props = LitePal.findAll(XLProp.class);
 
-        //如果用户数据为空，装入数据
-        if (users.size() == 0){
+        // 如果用户数据为空，装入数据
+        if (users.size() == 0) {
             XLUser user = new XLUser();
             user.setU_money(1000);
             user.setU_background(0);
             user.save();
         }
 
-        //如果关卡数据为空，装入数据
-        if (levels.size() == 0){
-            //简单模式
-            for(int i = 1; i <= 40; i++){
+        // 如果关卡数据为空，装入数据
+        if (levels.size() == 0) {
+            // 简单模式
+            for (int i = 1; i <= 40; i++) {
                 XLLevel level = new XLLevel();
-                //设置关卡号
+                // 设置关卡号
                 level.setL_id(i);
-                //设置关卡模式
+                // 设置关卡模式
                 level.setL_mode('1');
-                //设置关卡的闯关状态
-                if (i == 1){
+                // 设置关卡的闯关状态
+                if (i == 1) {
                     level.setL_new('4');
-                }else {
+                } else {
                     level.setL_new('0');
                 }
-                //设置关卡的闯关时间
+                // 设置关卡的闯关时间
                 level.setL_time(0);
 
-                //插入
+                // 插入
                 level.save();
             }
 
-            //普通模式
-            for(int i = 1; i <= 40; i++){
+            // 普通模式
+            for (int i = 1; i <= 40; i++) {
                 XLLevel level = new XLLevel();
-                //设置关卡号
+                // 设置关卡号
                 level.setL_id(i);
-                //设置关卡模式
+                // 设置关卡模式
                 level.setL_mode('2');
-                //设置关卡的闯关状态
-                if (i == 1){
+                // 设置关卡的闯关状态
+                if (i == 1) {
                     level.setL_new('4');
-                }else {
+                } else {
                     level.setL_new('0');
                 }
-                //设置关卡的闯关时间
+                // 设置关卡的闯关时间
                 level.setL_time(0);
 
-                //插入
+                // 插入
                 level.save();
             }
 
-            //困难模式
-            for(int i = 1; i <= 40; i++){
+            // 困难模式
+            for (int i = 1; i <= 40; i++) {
                 XLLevel level = new XLLevel();
-                //设置关卡号
+                // 设置关卡号
                 level.setL_id(i);
-                //设置关卡模式
+                // 设置关卡模式
                 level.setL_mode('3');
-                //设置关卡的闯关状态
-                if (i == 1){
+                // 设置关卡的闯关状态
+                if (i == 1) {
                     level.setL_new('4');
-                }else {
+                } else {
                     level.setL_new('0');
                 }
-                //设置关卡的闯关时间
+                // 设置关卡的闯关时间
                 level.setL_time(0);
 
-                //插入
+                // 插入
                 level.save();
             }
         }
 
-        //如果道具数据为空，装入数据
-        if (props.size() == 0){
-            //1.装入拳头道具
+        // 如果道具数据为空，装入数据
+        if (props.size() == 0) {
+            // 1.装入拳头道具
             XLProp prop_fight = new XLProp();
             prop_fight.setP_kind('1');
             prop_fight.setP_number(9);
             prop_fight.setP_price(10);
             prop_fight.save();
 
-            //2.装入炸弹道具
+            // 2.装入炸弹道具
             XLProp prop_bomb = new XLProp();
             prop_bomb.setP_kind('2');
             prop_bomb.setP_number(9);
             prop_bomb.setP_price(10);
             prop_bomb.save();
 
-            //3.装入刷新道具
+            // 3.装入刷新道具
             XLProp prop_refresh = new XLProp();
             prop_refresh.setP_kind('3');
             prop_refresh.setP_number(9);
@@ -248,22 +248,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
      * 用给定资源设置指定按钮的drawableLeft
      */
     private void setDrawableLeft(Button btn, int main_mode_resource) {
-        //获取指定的drawable
+        // 获取指定的drawable
         Drawable drawable = getResources().getDrawable(main_mode_resource);
-        //设置其drawable的左上右下
-        drawable.setBounds(PxUtil.dpToPx(20,this),PxUtil.dpToPx(2,this), PxUtil.dpToPx(60,this),PxUtil.dpToPx(42,this));
-        //设置放在控件的左上右下
-        btn.setCompoundDrawables(drawable,null,null,null);
+        // 设置其drawable的左上右下
+        drawable.setBounds(PxUtil.dpToPx(20, this), PxUtil.dpToPx(2, this), PxUtil.dpToPx(60, this), PxUtil.dpToPx(42, this));
+        // 设置放在控件的左上右下
+        btn.setCompoundDrawables(drawable, null, null, null);
     }
 
     /**
      * 播放背景音乐
      */
     private void playMusic() {
-        //判断是否正在播放
+        // 判断是否正在播放
         if (!BackgroundMusicManager.getInstance(this).isBackgroundMusicPlaying()) {
 
-            //播放
+            // 播放
             BackgroundMusicManager.getInstance(this).playBackgroundMusic(
                     R.raw.bg_music,
                     true
@@ -273,114 +273,114 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        //播放点击音效
+        // 播放点击音效
         SoundPlayUtil.getInstance(getBaseContext()).play(3);
 
-        //fragment事务
+        // fragment事务
         final FragmentManager manager = getSupportFragmentManager();
         final FragmentTransaction transaction = manager.beginTransaction();
 
-        //区分点击
-        switch (v.getId()){
+        // 区分点击
+        switch (v.getId()) {
             case R.id.main_mode_easy:
-                Log.d(Constant.TAG,"简单模式按钮");
+                Log.d(Constant.TAG, "简单模式按钮");
 
-                //查询简单模式的数据
+                // 查询简单模式的数据
                 List<XLLevel> XLLevels1 = LitePal.where("l_mode == ?", "1").find(XLLevel.class);
-                Log.d(Constant.TAG,XLLevels1.size()+"");
+                Log.d(Constant.TAG, XLLevels1.size() + "");
 
-                //依次查询每一个内容
+                // 依次查询每一个内容
                 for (XLLevel xlLevel : XLLevels1) {
-                    Log.d(Constant.TAG,xlLevel.toString());
+                    Log.d(Constant.TAG, xlLevel.toString());
                 }
 
-                //跳转界面
+                // 跳转界面
                 Intent intent_easy = new Intent(this, LevelActivity.class);
-                //加入数据
+                // 加入数据
                 Bundle bundle_easy = new Bundle();
-                //加入关卡模式数据
-                bundle_easy.putString("mode","简单");
-                //加入关卡数据
+                // 加入关卡模式数据
+                bundle_easy.putString("mode", "简单");
+                // 加入关卡数据
                 bundle_easy.putParcelableArrayList("levels", (ArrayList<? extends Parcelable>) XLLevels1);
                 intent_easy.putExtras(bundle_easy);
-                //跳转
+                // 跳转
                 startActivity(intent_easy);
 
                 break;
             case R.id.main_mode_normal:
-                Log.d(Constant.TAG,"普通模式按钮");
+                Log.d(Constant.TAG, "普通模式按钮");
 
-                //查询简单模式的数据
+                // 查询简单模式的数据
                 List<XLLevel> XLLevels2 = LitePal.where("l_mode == ?", "2").find(XLLevel.class);
-                Log.d(Constant.TAG,XLLevels2.size()+"");
+                Log.d(Constant.TAG, XLLevels2.size() + "");
 
-                //依次查询每一个内容
+                // 依次查询每一个内容
                 for (XLLevel xlLevel : XLLevels2) {
-                    Log.d(Constant.TAG,xlLevel.toString());
+                    Log.d(Constant.TAG, xlLevel.toString());
                 }
 
-                //跳转界面
+                // 跳转界面
                 Intent intent_normal = new Intent(this, LevelActivity.class);
-                //加入数据
+                // 加入数据
                 Bundle bundle_normal = new Bundle();
-                //加入关卡模式数据
-                bundle_normal.putString("mode","简单");
-                //加入关卡数据
+                // 加入关卡模式数据
+                bundle_normal.putString("mode", "简单");
+                // 加入关卡数据
                 bundle_normal.putParcelableArrayList("levels", (ArrayList<? extends Parcelable>) XLLevels2);
                 intent_normal.putExtras(bundle_normal);
-                //跳转
+                // 跳转
                 startActivity(intent_normal);
 
                 break;
             case R.id.main_mode_hard:
-                Log.d(Constant.TAG,"困难模式按钮");
+                Log.d(Constant.TAG, "困难模式按钮");
 
-                //查询简单模式的数据
+                // 查询简单模式的数据
                 List<XLLevel> XLLevels3 = LitePal.where("l_mode == ?", "3").find(XLLevel.class);
-                Log.d(Constant.TAG,XLLevels3.size()+"");
-                
-                //依次查询每一个内容
+                Log.d(Constant.TAG, XLLevels3.size() + "");
+
+                // 依次查询每一个内容
                 for (XLLevel xlLevel : XLLevels3) {
-                    Log.d(Constant.TAG,xlLevel.toString());
+                    Log.d(Constant.TAG, xlLevel.toString());
                 }
 
-                //跳转界面
+                // 跳转界面
                 Intent intent_hard = new Intent(this, LevelActivity.class);
-                //加入数据
+                // 加入数据
                 Bundle bundle_hard = new Bundle();
-                //加入关卡模式数据
-                bundle_hard.putString("mode","简单");
-                //加入关卡数据
+                // 加入关卡模式数据
+                bundle_hard.putString("mode", "简单");
+                // 加入关卡数据
                 bundle_hard.putParcelableArrayList("levels", (ArrayList<? extends Parcelable>) XLLevels3);
                 intent_hard.putExtras(bundle_hard);
-                //跳转
+                // 跳转
                 startActivity(intent_hard);
 
                 break;
             case R.id.main_setting:
-                Log.d(Constant.TAG,"设置按钮");
+                Log.d(Constant.TAG, "设置按钮");
 
-                //添加一个fragment
+                // 添加一个fragment
                 final SettingFragment setting = new SettingFragment();
-                transaction.replace(R.id.root_main,setting,"setting");
+                transaction.replace(R.id.root_main, setting, "setting");
                 transaction.commit();
 
                 break;
             case R.id.main_help:
-                Log.d(Constant.TAG,"帮助按钮");
+                Log.d(Constant.TAG, "帮助按钮");
 
-                //添加一个fragment
+                // 添加一个fragment
                 final HelpFragment help = new HelpFragment();
-                transaction.replace(R.id.root_main,help,"help");
+                transaction.replace(R.id.root_main, help, "help");
                 transaction.commit();
 
                 break;
             case R.id.main_store:
-                Log.d(Constant.TAG,"商店按钮");
+                Log.d(Constant.TAG, "商店按钮");
 
-                //添加一个fragment
+                // 添加一个fragment
                 final StoreFragment store = new StoreFragment();
-                transaction.replace(R.id.root_main,store,"store");
+                transaction.replace(R.id.root_main, store, "store");
                 transaction.commit();
 
         }

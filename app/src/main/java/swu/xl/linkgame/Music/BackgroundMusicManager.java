@@ -5,20 +5,21 @@ import android.media.MediaPlayer;
 import android.util.Log;
 
 public class BackgroundMusicManager {
-    private static BackgroundMusicManager backgroundMusic = null;
     private static final String TAG = "Bg_Music";
+    private static BackgroundMusicManager backgroundMusic = null;
+    private final Context mContext;
     private float mLeftVolume;
     private float mRightVolume;
-    private final Context mContext;
     private MediaPlayer mBackgroundMediaPlayer;
     private boolean mIsPaused;
     private int mCurrentPath;
 
-    //单例模式
+    // 单例模式
     private BackgroundMusicManager(Context context) {
         this.mContext = context;
         initData();
     }
+
     public static synchronized BackgroundMusicManager getInstance(Context context) {
         if (backgroundMusic == null) {
             backgroundMusic = new BackgroundMusicManager(context);
@@ -26,7 +27,7 @@ public class BackgroundMusicManager {
         return backgroundMusic;
     }
 
-    // 初始化一些数据
+    //  初始化一些数据
     private void initData() {
         mLeftVolume = 0.5f;
         mRightVolume = 0.5f;
@@ -38,26 +39,24 @@ public class BackgroundMusicManager {
     /**
      * 根据path路径播放背景音乐
      *
-     * @param path
-     *            :assets中的音频路径
-     * @param isLoop
-     *            :是否循环播放
+     * @param path   :assets中的音频路径
+     * @param isLoop :是否循环播放
      */
     public void playBackgroundMusic(int path, boolean isLoop) {
         if (mCurrentPath == 0) {
-            // 这是第一次播放背景音乐--- it is the first time to play background music
-            // 或者是执行end()方法后，重新被叫---or end() was called
+            //  这是第一次播放背景音乐--- it is the first time to play background music
+            //  或者是执行end()方法后，重新被叫---or end() was called
             mBackgroundMediaPlayer = createMediaPlayerFromPath(path);
             mCurrentPath = path;
         } else {
             if (mCurrentPath != path) {
-                // 播放一个新的背景音乐--- play new background music
-                // 释放旧的资源并生成一个新的----release old resource and create a new one
+                //  播放一个新的背景音乐--- play new background music
+                //  释放旧的资源并生成一个新的----release old resource and create a new one
                 if (mBackgroundMediaPlayer != null) {
                     mBackgroundMediaPlayer.release();
                 }
                 mBackgroundMediaPlayer = createMediaPlayerFromPath(path);
-                // 记录这个路径---record the path
+                //  记录这个路径---record the path
                 mCurrentPath = path;
             }
         }
@@ -65,7 +64,7 @@ public class BackgroundMusicManager {
         if (mBackgroundMediaPlayer == null) {
             Log.e(TAG, "playBackgroundMusic: background media player is null");
         } else {
-            // 若果音乐正在播放或已近中断，停止它---if the music is playing or paused, stop it
+            //  若果音乐正在播放或已近中断，停止它---if the music is playing or paused, stop it
             mBackgroundMediaPlayer.stop();
             mBackgroundMediaPlayer.setLooping(isLoop);
             try {
@@ -85,9 +84,9 @@ public class BackgroundMusicManager {
     public void stopBackgroundMusic() {
         if (mBackgroundMediaPlayer != null) {
             mBackgroundMediaPlayer.stop();
-            // should set the state, if not , the following sequence will be
-            // error
-            // play -> pause -> stop -> resume
+            //  should set the state, if not , the following sequence will be
+            //  error
+            //  play -> pause -> stop -> resume
             this.mIsPaused = false;
         }
     }
@@ -152,7 +151,7 @@ public class BackgroundMusicManager {
         if (mBackgroundMediaPlayer != null) {
             mBackgroundMediaPlayer.release();
         }
-        // 重新“初始化数据”
+        //  重新“初始化数据”
         initData();
     }
 
@@ -172,8 +171,7 @@ public class BackgroundMusicManager {
     /**
      * 设置背景音乐的音量
      *
-     * @param volume
-     *            ：设置播放的音量，float类型
+     * @param volume ：设置播放的音量，float类型
      */
     public void setBackgroundVolume(float volume) {
         this.mLeftVolume = this.mRightVolume = volume;
@@ -186,8 +184,7 @@ public class BackgroundMusicManager {
     /**
      * create mediaplayer for music
      *
-     * @param path
-     *            the path relative to assets
+     * @param path the path relative to assets
      * @return
      */
     private MediaPlayer createMediaPlayerFromPath(int path) {

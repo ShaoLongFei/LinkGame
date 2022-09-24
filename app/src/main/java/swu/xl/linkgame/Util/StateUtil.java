@@ -10,6 +10,7 @@ public class StateUtil {
 
     /**
      * 判断是否在前台
+     *
      * @param context
      * @return
      */
@@ -21,7 +22,7 @@ public class StateUtil {
                 if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND) {
                     Log.i("后台", appProcess.processName);
                     return true;
-                }else{
+                } else {
                     Log.i("前台", appProcess.processName);
                     return false;
                 }

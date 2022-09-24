@@ -13,15 +13,16 @@ import swu.xl.linkgame.Constant.Constant;
 public class ScreenUtil {
     /**
      * 获取屏幕的宽度
+     *
      * @param context
      * @return
      */
-    public static int getScreenWidth(Context context){
-        //窗口管理者
+    public static int getScreenWidth(Context context) {
+        // 窗口管理者
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        //存储尺寸的
+        // 存储尺寸的
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        //获取尺寸
+        // 获取尺寸
         assert windowManager != null;
         windowManager.getDefaultDisplay().getRealMetrics(displayMetrics);
 
@@ -30,15 +31,16 @@ public class ScreenUtil {
 
     /**
      * 获取屏幕的高度
+     *
      * @param context
      * @return
      */
-    public static int getScreenHeight(Context context){
-        //窗口管理者
+    public static int getScreenHeight(Context context) {
+        // 窗口管理者
         WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        //存储尺寸的
+        // 存储尺寸的
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        //获取尺寸
+        // 获取尺寸
         assert windowManager != null;
         windowManager.getDefaultDisplay().getRealMetrics(displayMetrics);
 
@@ -47,10 +49,11 @@ public class ScreenUtil {
 
     /**
      * 获取StatusBar状态栏的高度
+     *
      * @param context
      * @return
      */
-    public static int getStateBarHeight(Context context){
+    public static int getStateBarHeight(Context context) {
         int statusHeight = -1;
         try {
             Class clazz = Class.forName("com.android.internal.R$dimen");
@@ -66,6 +69,7 @@ public class ScreenUtil {
 
     /**
      * 判断设置是否有NavigationBar导航栏
+     *
      * @param context
      * @return
      */
@@ -83,11 +87,11 @@ public class ScreenUtil {
             if ("1".equals(navBarOverride)) {
                 hasNavigationBar = false;
 
-                Log.d(Constant.TAG,"手机没有导航栏");
+                Log.d(Constant.TAG, "手机没有导航栏");
             } else if ("0".equals(navBarOverride)) {
                 hasNavigationBar = true;
 
-                Log.d(Constant.TAG,"手机有导航栏");
+                Log.d(Constant.TAG, "手机有导航栏");
             }
         } catch (Exception e) {
 
@@ -98,16 +102,17 @@ public class ScreenUtil {
 
     /**
      * 返回NavigationBar导航栏的高度
+     *
      * @param context
      * @return
      */
     public static int getNavigationBarHeight(Context context) {
         int height = 0;
 
-        //如果存在
-        if (ScreenUtil.checkDeviceHasNavigationBar(context)){
+        // 如果存在
+        if (ScreenUtil.checkDeviceHasNavigationBar(context)) {
             Resources resources = context.getResources();
-            int resourceId = resources.getIdentifier("navigation_bar_height","dimen", "android");
+            int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
             height = resources.getDimensionPixelSize(resourceId);
             Log.v("dbw", "Navi height:" + height);
         }

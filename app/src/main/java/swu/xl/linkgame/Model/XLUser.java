@@ -6,12 +6,12 @@ import org.litepal.crud.LitePalSupport;
  * 用户
  */
 public class XLUser extends LitePalSupport {
-    //用户持有的金币数
+    // 用户持有的金币数
     private int u_money;
-    //当前用户使用的游戏背景
+    // 当前用户使用的游戏背景
     private int u_background;
 
-    //setter,getter方法
+    // setter,getter方法
     public int getU_money() {
         return u_money;
     }

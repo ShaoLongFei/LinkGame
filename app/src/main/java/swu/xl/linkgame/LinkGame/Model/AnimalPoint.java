@@ -9,6 +9,7 @@ public class AnimalPoint {
 
     /**
      * 两个参数的构造方法
+     *
      * @param x
      * @param y
      */
