@@ -2,8 +2,6 @@ package swu.xl.linkgame.Util;
 
 import android.content.Context;
 
-import swu.xl.linkgame.Constant.Constant;
-
 public class PxUtil {
 
     /**

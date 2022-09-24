@@ -1,8 +1,5 @@
 package swu.xl.linkgame.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.backup.BackupManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -12,8 +9,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.zhangyue.we.x2c.X2C;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import org.litepal.LitePal;
 
@@ -23,11 +18,9 @@ import java.util.List;
 import swu.xl.linkgame.Constant.Constant;
 import swu.xl.linkgame.LinkGame.Utils.LinkUtil;
 import swu.xl.linkgame.Model.XLLevel;
-import swu.xl.linkgame.Music.BackgroundMusicManager;
 import swu.xl.linkgame.Music.SoundPlayUtil;
 import swu.xl.linkgame.R;
 import swu.xl.linkgame.SelfView.XLTextView;
-import swu.xl.linkgame.Util.StateUtil;
 
 public class SuccessActivity extends BaseActivity implements View.OnClickListener {
     //星星
@@ -53,12 +46,10 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
     //关卡
     XLLevel level;
 
-    @Xml(layouts = "activity_success")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_success);
-        X2C.setContentView(this,R.layout.activity_success);
+        setContentView(R.layout.activity_success);
 
         //沉浸式状态栏
         ImmersionBar.with(this).init();
@@ -85,23 +76,23 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
         int serial_click = bundle.getInt("serial_click");
 
         //设置关卡数据
-        level_text.setText("第"+level.getL_id()+"关");
+        level_text.setText("第" + level.getL_id() + "关");
 
         //设置星星
         int star_size = level.getL_new() - '0';
-        Log.d(Constant.TAG,"星星个数："+level.getL_new()+" "+star_size);
+        Log.d(Constant.TAG, "星星个数：" + level.getL_new() + " " + star_size);
         for (int i = 1; i <= star_size; i++) {
-            stars.get(i-1).setVisibility(View.VISIBLE);
+            stars.get(i - 1).setVisibility(View.VISIBLE);
         }
 
         //设置时间
-        time_text.setText(level.getL_time()+"秒");
+        time_text.setText(level.getL_time() + "秒");
 
         //设置分数
-        score_text.setText(LinkUtil.getScoreByTime(level.getL_time())+"分");
+        score_text.setText(LinkUtil.getScoreByTime(level.getL_time()) + "分");
 
         //设置连击
-        batter_text.setText(serial_click+"次");
+        batter_text.setText(serial_click + "次");
     }
 
     /**
@@ -138,24 +129,24 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
         //播放点击音效
         SoundPlayUtil.getInstance(getBaseContext()).play(3);
 
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btn_menu:
                 //关卡菜单按钮
-                Log.d(Constant.TAG,"关卡菜单按钮");
+                Log.d(Constant.TAG, "关卡菜单按钮");
 
                 jumpToActivity(0);
 
                 break;
             case R.id.btn_refresh:
                 //重新加载按钮
-                Log.d(Constant.TAG,"重新加载按钮");
+                Log.d(Constant.TAG, "重新加载按钮");
 
                 jumpToActivity(1);
 
                 break;
             case R.id.btn_next:
                 //下一关按钮
-                Log.d(Constant.TAG,"下一个关卡按钮");
+                Log.d(Constant.TAG, "下一个关卡按钮");
 
                 jumpToActivity(2);
 
@@ -165,13 +156,14 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
 
     /**
      * 跳转界面
+     *
      * @param flag
      */
-    private void jumpToActivity(int flag){
-        if (flag == 0){
+    private void jumpToActivity(int flag) {
+        if (flag == 0) {
             //查询对应模式的数据
             List<XLLevel> XLLevels = LitePal.where("l_mode == ?", String.valueOf(level.getL_mode())).find(XLLevel.class);
-            Log.d(Constant.TAG,XLLevels.size()+"");
+            Log.d(Constant.TAG, XLLevels.size() + "");
             //依次查询每一个内容
             for (XLLevel xlLevel : XLLevels) {
                 Log.d(Constant.TAG, xlLevel.toString());
@@ -182,21 +174,21 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
             //加入数据
             Bundle bundle = new Bundle();
             //加入关卡模式数据
-            bundle.putString("mode","简单");
+            bundle.putString("mode", "简单");
             //加入关卡数据
             bundle.putParcelableArrayList("levels", (ArrayList<? extends Parcelable>) XLLevels);
             intent.putExtras(bundle);
             startActivity(intent);
-        }else if (flag == 1){
+        } else if (flag == 1) {
             //跳转界面
             Intent intent = new Intent(this, LinkActivity.class);
             //加入数据
             Bundle bundle = new Bundle();
             //加入关卡数据
-            bundle.putParcelable("level",level);
+            bundle.putParcelable("level", level);
             intent.putExtras(bundle);
             startActivity(intent);
-        }else {
+        } else {
             //下一关
             //跳转界面
             Intent intent = new Intent(this, LinkActivity.class);
@@ -204,7 +196,7 @@ public class SuccessActivity extends BaseActivity implements View.OnClickListene
             Bundle bundle = new Bundle();
             //加入关卡数据
             XLLevel next_level = LitePal.find(XLLevel.class, level.getId() + 1);
-            bundle.putParcelable("level",next_level);
+            bundle.putParcelable("level", next_level);
             intent.putExtras(bundle);
             //跳转
             startActivity(intent);

@@ -19,7 +19,8 @@
         <activity android:name=".Activity.LevelActivity" />
         <activity android:name=".Activity.FailureActivity" />
         <activity android:name=".Activity.SuccessActivity" />
-        <activity android:name=".Activity.MainActivity">
+        <activity android:name=".Activity.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

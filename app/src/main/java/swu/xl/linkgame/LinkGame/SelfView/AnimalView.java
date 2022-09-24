@@ -7,10 +7,10 @@ import swu.xl.linkgame.LinkGame.Constant.LinkConstant;
 
 public class AnimalView extends androidx.appcompat.widget.AppCompatImageView {
     //图片的标志代号，用来判断两个图片是否相等
-    private int flag;
+    private final int flag;
 
     //图片的坐标
-    private AnimalPoint point;
+    private final AnimalPoint point;
 
     /**
      * 构造方法

@@ -17,7 +17,9 @@ public class AnimalSearchUtil {
      */
     private static boolean canMatchTwoAnimalWithNoBreak(int[][] board, AnimalPoint startPoint, AnimalPoint endPoint, LinkInfo linkInfo){
         //如果不属于无转折连接，直接返回
-        if (startPoint.x != endPoint.x && startPoint.y != endPoint.y) return false;
+        if (startPoint.x != endPoint.x && startPoint.y != endPoint.y) {
+            return false;
+        }
 
         //记录两点之间的范围边界
         int min = 0;

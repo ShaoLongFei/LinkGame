@@ -1,7 +1,5 @@
 package swu.xl.linkgame.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,21 +14,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.zhangyue.we.x2c.X2C;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import java.util.List;
 
 import swu.xl.linkgame.Constant.Constant;
 import swu.xl.linkgame.Constant.Enum.LevelState;
 import swu.xl.linkgame.Model.XLLevel;
-import swu.xl.linkgame.Music.BackgroundMusicManager;
 import swu.xl.linkgame.Music.SoundPlayUtil;
 import swu.xl.linkgame.R;
 import swu.xl.linkgame.SelfView.XLImageView;
 import swu.xl.linkgame.Util.PxUtil;
 import swu.xl.linkgame.Util.ScreenUtil;
-import swu.xl.linkgame.Util.StateUtil;
 
 public class LevelActivity extends BaseActivity implements View.OnClickListener {
     //屏幕宽度
@@ -62,12 +56,10 @@ public class LevelActivity extends BaseActivity implements View.OnClickListener 
     //关卡根布局
     RelativeLayout level_layout;
 
-    @Xml(layouts = "activity_level")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_level);
-        X2C.setContentView(this,R.layout.activity_level);
+        setContentView(R.layout.activity_level);
 
         //沉浸式状态栏
         ImmersionBar.with(this).init();

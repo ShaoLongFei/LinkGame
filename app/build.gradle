@@ -1,17 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "swu.xl.linkgame"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -21,27 +19,21 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
+    implementation 'androidx.appcompat:appcompat:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'org.litepal.android:java:3.0.0'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
-
-    annotationProcessor 'com.zhangyue.we:x2c-apt:1.1.2'
-    implementation 'com.zhangyue.we:x2c-lib:1.0.6'
     implementation 'com.github.SheHuan:NiceImageView:1.0.5'
-
     implementation 'com.github.xiaoshitounen:NumberOfItem:1.0.2'
     implementation 'com.github.xiaoshitounen:CircleProgress:1.0.5'
-
     implementation 'tyrantgit:explosionfield:1.0.1'
 }

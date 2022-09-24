@@ -1,7 +1,5 @@
 package swu.xl.linkgame.Model;
 
-import androidx.constraintlayout.solver.LinearSystem;
-
 import org.litepal.crud.LitePalSupport;
 
 /**

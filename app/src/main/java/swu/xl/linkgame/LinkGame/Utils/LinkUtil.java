@@ -9,7 +9,6 @@ import java.util.Random;
 
 import swu.xl.linkgame.Constant.Constant;
 import swu.xl.linkgame.Constant.Enum.LevelMode;
-import swu.xl.linkgame.LinkGame.Constant.LinkBoard;
 import swu.xl.linkgame.LinkGame.Model.AnimalPoint;
 import swu.xl.linkgame.LinkGame.Constant.LinkConstant;
 import swu.xl.linkgame.LinkGame.Manager.LinkManager;
@@ -240,11 +239,15 @@ public class LinkUtil {
             //重复的随机数不再加入
             int flag = 0;
             for (Integer integer : list) {
-                if (integer == var) flag = 1;
+                if (integer == var) {
+                    flag = 1;
+                }
             }
 
             //满足条件的加入
-            if (flag == 0) list.add(var);
+            if (flag == 0) {
+                list.add(var);
+            }
         }
 
         return list;
@@ -350,6 +353,8 @@ public class LinkUtil {
         }
 
         //将临时数组的值赋值到原数组
-        if (temp.length >= 0) System.arraycopy(temp, 0, nums, start, temp.length);
+        if (temp.length >= 0) {
+            System.arraycopy(temp, 0, nums, start, temp.length);
+        }
     }
 }

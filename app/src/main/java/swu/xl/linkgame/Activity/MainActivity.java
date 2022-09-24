@@ -18,8 +18,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.zhangyue.we.x2c.X2C;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import org.litepal.LitePal;
 
@@ -58,11 +56,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private BroadcastReceiver mBroadcastReceiver;
 
-    @Xml(layouts = "activity_main")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        X2C.setContentView(this, R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         //提前加载资源，不然的话，资源没有加载好，会没有声音
         SoundPlayUtil.getInstance(this);

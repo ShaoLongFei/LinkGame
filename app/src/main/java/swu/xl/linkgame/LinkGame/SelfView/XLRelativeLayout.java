@@ -2,8 +2,6 @@ package swu.xl.linkgame.LinkGame.SelfView;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.RelativeLayout;
@@ -15,7 +13,6 @@ import swu.xl.linkgame.LinkGame.Model.AnimalPoint;
 import swu.xl.linkgame.LinkGame.Model.LinkInfo;
 import swu.xl.linkgame.LinkGame.Utils.CustomPaint;
 import swu.xl.linkgame.LinkGame.Utils.LinkUtil;
-import swu.xl.linkgame.Util.PxUtil;
 
 public class XLRelativeLayout extends RelativeLayout {
     //点的信息
@@ -88,8 +85,8 @@ public class XLRelativeLayout extends RelativeLayout {
                     );
 
                     //测试
-                    Log.d(Constant.TAG,points.get(i).toString()+" "+realPoint1.toString());
-                    Log.d(Constant.TAG,points.get(i+1).toString()+" "+realPoint2.toString());
+                    Log.d(Constant.TAG,points.get(i).toString()+" "+ realPoint1);
+                    Log.d(Constant.TAG,points.get(i+1).toString()+" "+ realPoint2);
 
                     //画闪电
                     customPaint.drawLightning(realPoint1.x,realPoint1.y,realPoint2.x,realPoint2.y,5,canvas);

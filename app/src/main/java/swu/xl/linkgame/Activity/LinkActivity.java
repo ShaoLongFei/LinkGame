@@ -114,12 +114,10 @@ public class LinkActivity extends BaseActivity implements View.OnClickListener,L
     //粉碎视图
     private ExplosionField explosionField;
 
-    //@Xml(layouts = "activity_link")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_link);
-        //X2C.setContentView(this,R.layout.activity_link);
 
         //沉浸式状态栏
         ImmersionBar.with(this).barAlpha(1.0f).init();

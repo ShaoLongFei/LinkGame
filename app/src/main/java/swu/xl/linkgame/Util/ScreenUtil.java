@@ -1,15 +1,12 @@
 package swu.xl.linkgame.Util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 
 import java.lang.reflect.Method;
-import java.util.Objects;
 
 import swu.xl.linkgame.Constant.Constant;
 

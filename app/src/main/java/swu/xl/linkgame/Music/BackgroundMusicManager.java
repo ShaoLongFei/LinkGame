@@ -1,21 +1,15 @@
 package swu.xl.linkgame.Music;
 
 import android.content.Context;
-import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.util.Log;
-
-import java.io.IOException;
-import java.util.Objects;
-
-import swu.xl.linkgame.R;
 
 public class BackgroundMusicManager {
     private static BackgroundMusicManager backgroundMusic = null;
     private static final String TAG = "Bg_Music";
     private float mLeftVolume;
     private float mRightVolume;
-    private Context mContext;
+    private final Context mContext;
     private MediaPlayer mBackgroundMediaPlayer;
     private boolean mIsPaused;
     private int mCurrentPath;

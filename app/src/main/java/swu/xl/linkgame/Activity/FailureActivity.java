@@ -1,8 +1,5 @@
 package swu.xl.linkgame.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -10,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 
 import com.gyf.immersionbar.ImmersionBar;
-import com.zhangyue.we.x2c.X2C;
-import com.zhangyue.we.x2c.ano.Xml;
 
 import org.litepal.LitePal;
 
@@ -20,22 +15,18 @@ import java.util.List;
 
 import swu.xl.linkgame.Constant.Constant;
 import swu.xl.linkgame.Model.XLLevel;
-import swu.xl.linkgame.Music.BackgroundMusicManager;
 import swu.xl.linkgame.Music.SoundPlayUtil;
 import swu.xl.linkgame.R;
-import swu.xl.linkgame.Util.StateUtil;
 
 public class FailureActivity extends BaseActivity {
 
     //level
     XLLevel level;
 
-    @Xml(layouts = "activity_failure")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_failure);
-        X2C.setContentView(this, R.layout.activity_failure);
+        setContentView(R.layout.activity_failure);
 
         //沉浸式状态栏
         ImmersionBar.with(this).init();

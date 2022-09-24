@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -24,7 +23,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import swu.xl.linkgame.Activity.FailureActivity;
-import swu.xl.linkgame.Activity.LinkActivity;
 import swu.xl.linkgame.Activity.SuccessActivity;
 import swu.xl.linkgame.Constant.Constant;
 import swu.xl.linkgame.LinkGame.Model.AnimalPoint;
@@ -50,7 +48,7 @@ public class LinkManager {
     private Timer timer;
     private float time = LinkConstant.TIME;
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
+    private final Handler handler = new Handler(){
 
         @Override
         public void handleMessage(@NonNull Message msg) {
